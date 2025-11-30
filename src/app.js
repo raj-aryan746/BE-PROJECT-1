@@ -4,26 +4,25 @@ import cookieParser from "cookie-parser";
 
 const app = express();
 
-const lim = "16kb"
+const limitation = "16kb"
 
-app.use(cors(
-    {
-        origin: process.env.CORS_ORIGIN,
-        credentials: true,
-    }
-));
+app.use(cors({
+    origin: process.env.CORS_ORIGIN, // 1
+    credentials: true,
+}));
 
-app.use(express.json(
-    { limit: lim, }
-));
+app.use(express.json({ 
+    limit: limitation,          // 2
+}));
 
-app.use(express.urlencoded(
-    { extended: true, limit: lim, }
-));
+app.use(express.urlencoded({ 
+    extended: true,              // 3
+    limit: limitation, 
+}));
 
-app.use(express.static("public"));
+app.use(express.static("public"));  // 4
 
-app.use(cookieParser());
+app.use(cookieParser());        // 5
 
 
 export { app };
