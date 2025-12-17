@@ -1,6 +1,7 @@
 import { v2 as cloudinary } from "cloudinary";
 import fs from "fs";
 
+
 cloudinary.config(
     { 
         cloud_name: process.env.CLOUDINARY_CLOUD_NAME, 
@@ -9,7 +10,7 @@ cloudinary.config(
     }
 );
 
-const uploadOnCloudinary = async (localFilePath) => {
+const uploadOnCloudinary = async (localFilePath) => {   
     try {
         if (!localFilePath) return console.log(" \n file upload FAILED"); 
         const response = await cloudinary.uploader.upload( localFilePath, { resource_type: "auto" } );    //upload the file on cloudinary

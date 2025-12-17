@@ -4,6 +4,7 @@ const asyncHandler = (requestHandler) => {
             requestHandler(req, res, next)
         ).catch((err)=> next(err))
     }
+
 };
 
 export {asyncHandler} ; 
@@ -15,10 +16,12 @@ const asyncHandler = (fn) => async (req, res, next ) => {
     try {
         await fn(req, res, next)
     } catch (error) {
-        res.status(err.code || 500).json({
+        console.error(error);
+        res.status(error.code || 500).json({
             success: false,
-            massage: err.massage
+            massage: error.massage || "Internal server error"
         });
     }
 };
 */
+

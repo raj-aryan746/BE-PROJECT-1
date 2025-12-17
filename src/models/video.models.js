@@ -15,7 +15,7 @@ const videoSchema = new Schema(
             type: String,
             required: [true, "without title we are not justify video"],
         },
-        discription:{
+        description:{
             type: String,
             required: [true, "give the overview of the inside of video"],
         },
