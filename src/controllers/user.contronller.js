@@ -4,7 +4,7 @@ import { User } from "../models/user.models.js"
 import { uploadOnCloudinary } from "../utils/cloudinary.js"
 import { ApiResponse } from "../utils/ApiResponse.js";
 
-const registerUser = asyncHandler( async (req, res) => {
+const registerUser = asyncHandler( async (req, res,) => {
     // get user detailes from frontfend
 
     const {fullName, userName, email, password} = req.body
@@ -20,11 +20,11 @@ const registerUser = asyncHandler( async (req, res) => {
 
     // check if user is already exists check with: "username, email"
 
-    const existedUser = User.findOne({
+    const existedUser = await User.findOne({
         $or: [{ userName },{ email }]
     })
 
-    if (existedUser) {
+    if (existedUser) {  
         throw new ApiError(409, `User with ${email} and ${userName} is already existed`)
     }
 
@@ -77,4 +77,8 @@ const registerUser = asyncHandler( async (req, res) => {
     );
 })
 
+
+
 export { registerUser };
+
+
