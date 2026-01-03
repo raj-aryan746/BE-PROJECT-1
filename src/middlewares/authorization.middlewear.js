@@ -7,7 +7,7 @@ export const verifyJWT = asyncHandler( async (req, _, next) => {
     
     try {
         const token = await req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "")
-        console.log('UYTRO',token)
+        console.log('UYTRO', typeof token, token)
         
         if (!token) {
             throw new ApiError(401, "Unauthorized request");

@@ -46,7 +46,7 @@ const registerUser = asyncHandler( async (req, res,) => {
     })
 
     if (existedUser) {  
-        throw new ApiError(409, `User with this email and username is already existed`)
+        throw new ApiError(409, `User with ${email} and ${userName} is already existed`)
     }
 
     // check for images, check for avatar 

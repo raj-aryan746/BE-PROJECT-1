@@ -1,10 +1,12 @@
 import express from "express";
 import cors from "cors";
-import cookieParser from "cookie-parser";
+import cookieParser from "cookie-parser" 
 
 const app = express();
 
 const limitation = "16kb"
+
+app.use( cookieParser() )
 
 app.use(cors({
     origin: process.env.CORS_ORIGIN, // 1
@@ -22,7 +24,6 @@ app.use(express.urlencoded({
 
 app.use(express.static("public"));  // 4
 
-app.use(cookieParser());        // 5
 
 
 // routes 
